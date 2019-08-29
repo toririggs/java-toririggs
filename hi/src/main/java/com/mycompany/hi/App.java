@@ -19,13 +19,21 @@ public class App {
         this.greating = greating;
     }
     
+    private String who = "World";
+    public String getWho() {
+        return who;
+    }
+    
+    public void setWho(String who) {
+        this.who = who;
+    }
+    
     public static void main(String[] args) throws Exception {
         App app = new App();
         app.run();
     }
     
     private void run() {
-        String who = "World";
-        System.out.println("Hello" + who + "!");
+        System.out.println(getGreating() + getWho() + "!");
     }
 }
