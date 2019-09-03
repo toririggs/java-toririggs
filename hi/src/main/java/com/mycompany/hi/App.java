@@ -31,9 +31,20 @@ public class App {
     public static void main(String[] args) throws Exception {
         App app = new App();
         app.run();
+        app.playBall();
+        String player = "steve";
+        app.setPlayer(player);
     }
     
     private void run() {
         System.out.println(getGreating() + getWho() + "!");
+    }
+
+    public void playBall() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setPlayer(String player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
