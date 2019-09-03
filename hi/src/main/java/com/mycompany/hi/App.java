@@ -28,6 +28,15 @@ public class App {
         this.who = who;
     }
     
+    private String message = null;
+    
+    public String getMessage() {
+        if(message == null){
+            message = getGreating() + getWho() + "!";
+        }
+        return message;
+    }
+    
     public static void main(String[] args) throws Exception {
         App app = new App();
         app.run();
@@ -37,7 +46,7 @@ public class App {
     }
     
     private void run() {
-        System.out.println(getGreating() + getWho() + "!");
+        System.out.println(getMessage());
     }
 
     public void playBall() {
