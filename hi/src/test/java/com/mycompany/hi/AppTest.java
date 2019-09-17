@@ -96,30 +96,4 @@ public class AppTest {
         String[] args = null;
         App.main(args);
     }
-
-    /**
-     * Test of playBall method, of class App.
-     */
-    @Test
-    public void testPlayBall() {
-        System.out.println("playBall");
-        App instance = new App();
-        instance.playBall();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setPlayer method, of class App.
-     */
-    @Test
-    public void testSetPlayer() {
-        System.out.println("setPlayer");
-        String player = "";
-        App instance = new App();
-        instance.setPlayer(player);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }
