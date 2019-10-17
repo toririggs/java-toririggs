@@ -48,6 +48,7 @@ public class App {
             out.println("Enter 3 to delete an item from the list");
             out.println("Enter 0 to quit");
             x = in.nextInt();
+            in.nextLine();
             switch(x) {
                 case 1:
                     showList();
@@ -76,11 +77,37 @@ public class App {
     }
     
     void addItem() {
-        out.println("Adding item:");
+        out.println("Please type the item you want to add to the list and press enter:");
+        String newItem = in.nextLine();
+        groceries.add(newItem);
+        out.println("The new item you entered is: " + newItem);
     }
     
     void deleteItem() {
-        out.println("Deleting item:");
+        if (!groceries.isEmpty())
+        {
+            out.println("Enter 1 to delete an item from the item's name");
+            out.println("Enter 2 to delete all items from the list");
+            int y = in.nextInt();
+            in.nextLine();
+            switch(y)
+            {
+                case 1:
+                    out.println("Enter the item you want to delete:");
+                    String delt = in.nextLine();
+                    boolean removed = groceries.remove(delt);
+                    if (!removed) out.println("The item you entered was not removed as it is not in the list.");
+                    break;
+                case 2:
+                    groceries.clear();
+                    out.println("Shopping list has been cleared!");
+                    break;
+                default:
+                    out.println("You did not enter a number that corresponds to one of the options. Returning to menu.");
+                    break;
+            }
+        }
+        else out.println("The shopping list is empty so you cannot delete an item.");
     }
     
     void pause() {
