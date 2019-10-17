@@ -39,6 +39,7 @@ public class App {
     
     void showMenu() {
         boolean running = true;
+        int x = 5;
         while (running) {
             System.out.println("Shopping List");
             out.println("Please select an option:");
@@ -46,6 +47,27 @@ public class App {
             out.println("Enter 2 to add an item to the list");
             out.println("Enter 3 to delete an item from the list");
             out.println("Enter 0 to quit");
+            x = in.nextInt();
+            switch(x) {
+                case 1:
+                    showList();
+                    pause();
+                    break;
+                case 2:
+                    addItem();
+                    pause();
+                    break;
+                case 3:
+                    deleteItem();
+                    pause();
+                    break;
+                case 0:
+                    running = false;
+                    break;
+                default:
+                    out.println("Please enter a number that corresponds to one of the options.");
+                    pause();
+            }
         }
     }
     
@@ -54,10 +76,15 @@ public class App {
     }
     
     void addItem() {
-        
+        out.println("Adding item:");
     }
     
     void deleteItem() {
-        
+        out.println("Deleting item:");
+    }
+    
+    void pause() {
+        out.println("Press enter to return to the menu");
+        in.nextLine();
     }
 }
