@@ -15,6 +15,6 @@ Repository for Java class with Dr. Macevoy
 | Assignment | Due Date | Done | Location | Notes |
 |-----------:|:--------:|:----:|:---------|:------|
 | 1 - Java Hello World |  |  y   | https://github.com/toririggs/java-toririggs/tree/master/hi | Create a Hello World app with Java |
-| 2 - Kattis Problem With Java  | 9/19 |  n  |  |  |
-| 3 -   |  |    |  |  |
+| 2 - Kattis Problem With Java  | 9/19 |  y  |  https://github.com/toririggs/java-toririggs/tree/master/kattis  |  Solve a Kattis problem using Java  |
+| 3 - Collections  |  10/17  |  n  |  https://github.com/toririggs/java-toririggs/tree/master/collections  |  Create a program using HashSet  |
 | 4 -   |  |    |  |  |
