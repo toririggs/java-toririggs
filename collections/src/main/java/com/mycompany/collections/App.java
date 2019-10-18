@@ -6,7 +6,10 @@
 package com.mycompany.collections;
 
 /**
- *
+ * idea for input sim: InputOutput inputOutput = new InputOutput();
+ * <add in input var with what we want in input>
+ * InputStream in = new ByteArrayInputStream(input.getBytes());
+ * assertEquals(<value of input var>, inputOutput.functionToTest());
  * @author lolak
  */
 import java.io.PrintStream;
@@ -25,16 +28,18 @@ public class App {
     }
     
     void run() {
-        initList();
+        var initFinished = initList();
+        out.println(initFinished);
         showMenu();
     }
     
-    void initList() {
+    String initList() {
         groceries.add("eggs");
         groceries.add("milk");
         groceries.add("Halloween candy");
         groceries.add("paper towels");
         groceries.add("phone case");
+        return "List initialized!";
     }
     
     void showMenu() {
@@ -51,11 +56,11 @@ public class App {
             in.nextLine();
             switch(x) {
                 case 1:
-                    showList();
+                    out.println(showList());
                     pause();
                     break;
                 case 2:
-                    addItem();
+                    out.println("The new item you entered is: " + addItem());
                     pause();
                     break;
                 case 3:
@@ -72,15 +77,16 @@ public class App {
         }
     }
     
-    void showList() {
-        out.println("The shopping list contains: " + groceries);
+    String showList() {
+        String ret = "The shopping list contains: " + groceries;
+        return ret;
     }
     
-    void addItem() {
+    String addItem() {
         out.println("Please type the item you want to add to the list and press enter:");
         String newItem = in.nextLine();
         groceries.add(newItem);
-        out.println("The new item you entered is: " + newItem);
+        return newItem;
     }
     
     void deleteItem() {
