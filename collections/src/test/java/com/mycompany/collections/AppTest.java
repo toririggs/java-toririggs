@@ -10,6 +10,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import java.util.Scanner;
 import static org.junit.Assert.*;
 
 /**
@@ -38,65 +39,111 @@ public class AppTest {
     }
 
     /**
-     * Test of main method, of class App.
+     * Test of closing the shopping list.
      */
     @Test
-    public void testMain() throws Exception {
-        System.out.println("main");
-        String[] args = null;
-        App.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of run method, of class App.
-     */
-    @Test
-    public void testRun() {
-        System.out.println("run");
+    public void testZero() {
+        System.out.println("Test Zero");
         App instance = new App();
+        instance.in = new Scanner("0\n");
         instance.run();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
-     * Test of initList method, of class App.
+     * Test of initList method, of class App. Checks if return value is List initialized!
      */
     @Test
     public void testInitList() {
         System.out.println("initList");
         App instance = new App();
-        String expResult = "";
+        String expResult = "List initialized!";
         String result = instance.initList();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
-     * Test of showMenu method, of class App.
+     * Test of showing the shopping list from the menu. Note that this test must also close out of the shopping list
+     * program, and it will activate the pause() function
      */
     @Test
-    public void testShowMenu() {
-        System.out.println("showMenu");
+    public void testOne() {
+        System.out.println("Test One");
         App instance = new App();
-        instance.showMenu();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.in = new Scanner("1\n\n0\n");
+        instance.run();
     }
 
     /**
-     * Test of showList method, of class App.
+     * Test of adding to the shopping list from the menu. Note that this test must also close out of the shopping
+     * list program, and it will activate the pause() function
+     */
+    @Test
+    public void testTwo() {
+        System.out.println("Test Two");
+        App instance = new App();
+        instance.in = new Scanner("2\nchicken\n\n0\n");
+        instance.run();
+    }
+
+    /**
+     * Test of calling the delete function but entering an incorrect number from the menu. Note that this test must
+     * also close out of the shopping list program, and it will activate the pause() function
+     */
+    @Test
+    public void testThree() {
+        System.out.println("Test Three");
+        App instance = new App();
+        instance.in = new Scanner("3\n5\n\n0\n");
+        instance.run();
+    }
+
+    /**
+     * Test of calling the delete function and deleting one item from the menu. Note that this test must
+     * also close out of the shopping list program, and it will activate the pause() function
+     */
+    @Test
+    public void testFour() {
+        System.out.println("Test Four");
+        App instance = new App();
+        instance.in = new Scanner("3\n1\neggs\n\n0\n");
+        instance.run();
+    }
+
+    /**
+     * Test of calling the delete function and deleting the whole list from the menu. Note that this test must
+     * also close out of the shopping list program, and it will activate the pause() function
+     */
+    @Test
+    public void testFive() {
+        System.out.println("Test Five");
+        App instance = new App();
+        instance.in = new Scanner("3\n2\n\n0\n");
+        instance.run();
+    }
+
+    /**
+     * Test of activating the default function from the menu. Note that this test must also close out of the shopping list
+     * program, and it will activate the pause() function
+     */
+    @Test
+    public void testSix() {
+        System.out.println("Test Six");
+        App instance = new App();
+        instance.in = new Scanner("6\n\n0\n");
+        instance.run();
+    }
+
+    /**
+     * Test of showList method, of class App. Note that the shopping list will be empty because it hasn't been
+     * initialized
      */
     @Test
     public void testShowList() {
         System.out.println("showList");
         App instance = new App();
-        instance.showList();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expResult = "The shopping list contains: []";
+        String result = instance.showList();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -106,33 +153,21 @@ public class AppTest {
     public void testAddItem() {
         System.out.println("addItem");
         App instance = new App();
-        instance.addItem();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String item = "lettuce";
+        instance.in = new Scanner(item);
+        String addedItem = instance.addItem();
+        assertEquals(item, addedItem);
     }
 
     /**
-     * Test of deleteItem method, of class App.
+     * Test of deleteItem method, of class App. Note that the list will be empty because it has not been initialized,
+     * so the function will simply print a line and close.
      */
     @Test
     public void testDeleteItem() {
         System.out.println("deleteItem");
         App instance = new App();
         instance.deleteItem();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of pause method, of class App.
-     */
-    @Test
-    public void testPause() {
-        System.out.println("pause");
-        App instance = new App();
-        instance.pause();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
