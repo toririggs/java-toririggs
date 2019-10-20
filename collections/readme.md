@@ -8,6 +8,6 @@ pom.xml - source code - https://github.com/toririggs/java-toririggs/blob/master/
 
 App.java - java code - https://github.com/toririggs/java-toririggs/blob/master/collections/src/main/java/com/mycompany/collections/App.java
 
-AppTest.java - java test cases - https://github.com/toririggs/java-toririggs/blob/master/collections/src/test/java/com/mycompany/collections/AppTest.java, INCOMPLETE
+AppTest.java - java test cases - https://github.com/toririggs/java-toririggs/blob/master/collections/src/test/java/com/mycompany/collections/AppTest.java
 
-Screenshot with tests passing to be included when tests are finished
+Screenshot with tests passing: https://github.com/toririggs/java-toririggs/blob/master/collections/hw3testspassed.png
