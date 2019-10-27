@@ -17,7 +17,7 @@ Repository for Java class with Dr. Macevoy
 | 1 - Java Hello World |  |  y   | https://github.com/toririggs/java-toririggs/tree/master/hi | Create a Hello World app with Java |
 | 2 - Kattis Problem With Java  | 9/19 |  y  |  https://github.com/toririggs/java-toririggs/tree/master/kattis  |  Solve a Kattis problem using Java  |
 | 3 - Collections  |  10/17  |  y  |  https://github.com/toririggs/java-toririggs/tree/master/collections  |  Create a program using HashSet  |
-| 4 - Threads  | 10/24 |  n  | https://github.com/toririggs/java-toririggs/tree/master/threads | Create a program utilizing threads |
+| 4 - Threads  | 10/24 |  y  | https://github.com/toririggs/java-toririggs/tree/master/threads | Create a program utilizing threads |
 | 5 - Database  | 10/31 |  n  |  | Create a program incorporating a database |
 | 6 -   |  |    |  |  |
 | 7 -   |  |    |  |  |
