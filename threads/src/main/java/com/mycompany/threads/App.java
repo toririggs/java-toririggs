@@ -69,7 +69,7 @@ public class App {
         out.println("Enter how many threads to run from 1 to 5");
         int num = in.nextInt();
         in.nextLine();
-        if (MAX > num && num > 0) {
+        if (MAX >= num && num > 0) {
             for (int i = 1; i<=num; i++){
                 switch(i) {
                     case 1:

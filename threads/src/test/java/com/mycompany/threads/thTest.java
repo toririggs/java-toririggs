@@ -43,12 +43,13 @@ public class thTest {
     @Test
     public void testGetB1() {
         System.out.println("getB1");
-        th instance = null;
-        int expResult = 0;
+        AreaOfTrapezoid obj = new AreaOfTrapezoid();
+        th instance = new th(obj);
+        int set = 6;
+        instance.setB1(set);
+        int expResult = 6;
         int result = instance.getB1();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -57,11 +58,15 @@ public class thTest {
     @Test
     public void testSetB1() {
         System.out.println("setB1");
-        int val = 0;
-        th instance = null;
-        instance.setB1(val);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        AreaOfTrapezoid obj = new AreaOfTrapezoid();
+        th instance = new th(obj);
+        int val1 = 1;
+        int val2 = 2;
+        instance.setB1(val1);
+        int result1 = instance.getB1();
+        instance.setB1(val2);
+        int result2 = instance.getB1();
+        assertNotEquals(result1, result2);
     }
 
     /**
@@ -70,12 +75,13 @@ public class thTest {
     @Test
     public void testGetB2() {
         System.out.println("getB2");
-        th instance = null;
-        int expResult = 0;
+        AreaOfTrapezoid obj = new AreaOfTrapezoid();
+        th instance = new th(obj);
+        int set = 8;
+        instance.setB2(set);
+        int expResult = 8;
         int result = instance.getB2();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -84,11 +90,15 @@ public class thTest {
     @Test
     public void testSetB2() {
         System.out.println("setB2");
-        int val = 0;
-        th instance = null;
-        instance.setB2(val);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        AreaOfTrapezoid obj = new AreaOfTrapezoid();
+        th instance = new th(obj);
+        int val1 = 3;
+        int val2 = 4;
+        instance.setB2(val1);
+        int result1 = instance.getB2();
+        instance.setB2(val2);
+        int result2 = instance.getB2();
+        assertNotEquals(result1, result2);
     }
 
     /**
@@ -97,12 +107,13 @@ public class thTest {
     @Test
     public void testGetH() {
         System.out.println("getH");
-        th instance = null;
-        int expResult = 0;
+        AreaOfTrapezoid obj = new AreaOfTrapezoid();
+        th instance = new th(obj);
+        int set = 9;
+        instance.setH(set);
+        int expResult = 9;
         int result = instance.getH();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -111,11 +122,15 @@ public class thTest {
     @Test
     public void testSetH() {
         System.out.println("setH");
-        int val = 0;
-        th instance = null;
-        instance.setH(val);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        AreaOfTrapezoid obj = new AreaOfTrapezoid();
+        th instance = new th(obj);
+        int val1 = 1;
+        int val2 = 2;
+        instance.setH(val1);
+        int result1 = instance.getH();
+        instance.setH(val2);
+        int result2 = instance.getH();
+        assertNotEquals(result1, result2);
     }
 
     /**
@@ -123,11 +138,7 @@ public class thTest {
      */
     @Test
     public void testRun() {
-        System.out.println("run");
-        th instance = null;
-        instance.run();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //testing both functions in AreaOfTrapezoid within AreaOfTrapezoidTest.java
     }
     
 }

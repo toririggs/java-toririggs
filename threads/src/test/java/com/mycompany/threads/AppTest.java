@@ -5,6 +5,7 @@
  */
 package com.mycompany.threads;
 
+import java.util.Scanner;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,27 +39,57 @@ public class AppTest {
     }
 
     /**
-     * Test of main method, of class App.
+     * Test using 1 thread
      */
     @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        App.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of run method, of class App.
-     */
-    @Test
-    public void testRun() {
-        System.out.println("run");
+    public void testOne() {
+        System.out.println("Test One");
         App instance = new App();
+        instance.in = new Scanner("1\n3\n4\n7\n");
         instance.run();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
+    /**
+     * Test using 2 threads
+     */
+    @Test
+    public void testTwo() {
+        System.out.println("Test Two");
+        App instance = new App();
+        instance.in = new Scanner("2\n3\n4\n7\n6\n3\n9\n");
+        instance.run();
+    }
+    
+    /**
+     * Test using 3 threads
+     */
+    @Test
+    public void testThree() {
+        System.out.println("Test Three");
+        App instance = new App();
+        instance.in = new Scanner("3\n3\n4\n7\n6\n3\n9\n4\n9\n4\n");
+        instance.run();
+    }
+    
+    /**
+     * Test using 4 threads
+     */
+    @Test
+    public void testFour() {
+        System.out.println("Test Four");
+        App instance = new App();
+        instance.in = new Scanner("4\n3\n4\n7\n6\n3\n9\n4\n9\n4\n6\n2\n4\n");
+        instance.run();
+    }
+    
+        /**
+     * Test using 5 threads
+     */
+    @Test
+    public void testFive() {
+        System.out.println("Test Five");
+        App instance = new App();
+        instance.in = new Scanner("5\n3\n4\n7\n6\n3\n9\n4\n9\n4\n6\n2\n4\n5\n5\n5\n");
+        instance.run();
+    }
 }

@@ -43,15 +43,13 @@ public class AreaOfTrapezoidTest {
     @Test
     public void testFindArea() {
         System.out.println("findArea");
-        int b1 = 0;
-        int b2 = 0;
-        int h = 0;
+        int b1 = 5;
+        int b2 = 10;
+        int h = 3;
+        int expResult = ((b1 + b2)/2) * h;
         AreaOfTrapezoid instance = new AreaOfTrapezoid();
-        int expResult = 0;
         int result = instance.findArea(b1, b2, h);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -60,11 +58,11 @@ public class AreaOfTrapezoidTest {
     @Test
     public void testPrintArea() {
         System.out.println("printArea");
-        int area = 0;
+        int b1 = 3;
+        int b2 = 6;
+        int h = 8;
         AreaOfTrapezoid instance = new AreaOfTrapezoid();
-        instance.printArea(area);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.printArea(instance.findArea(b1, b2, h));
     }
     
 }
