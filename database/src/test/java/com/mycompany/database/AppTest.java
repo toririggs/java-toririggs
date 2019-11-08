@@ -20,34 +20,6 @@ public class AppTest {
     
     public AppTest() {
     }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
-
-    /**
-     * Test of main method, of class App.
-     */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        App.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of run method, of class App.
@@ -57,20 +29,6 @@ public class AppTest {
         System.out.println("run");
         App instance = new App();
         instance.run();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of openConnect method, of class App.
-     */
-    @Test
-    public void testOpenConnect() {
-        System.out.println("openConnect");
-        App instance = new App();
-        instance.openConnect();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -79,11 +37,12 @@ public class AppTest {
     @Test
     public void testCreateTable() {
         System.out.println("createTable");
-        String tab = "";
+        String tab = "this_table";
         App instance = new App();
         instance.createTable(tab);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.openConnect();
+        // may need to use try catch and select to find if table exists
+        instance.closeConnect();
     }
 
     /**
