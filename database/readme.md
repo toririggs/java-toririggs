@@ -8,6 +8,6 @@ pom.xml - source code - https://github.com/toririggs/java-toririggs/blob/master/
 
 App.java - java code - https://github.com/toririggs/java-toririggs/blob/master/database/src/main/java/com/mycompany/database/App.java
 
-AppTest.java - java test cases - 
+AppTest.java - java test cases - https://github.com/toririggs/java-toririggs/blob/master/database/src/test/java/com/mycompany/database/AppTest.java
 
-Screenshot with tests passing - 
+Screenshot with tests passing - https://github.com/toririggs/java-toririggs/blob/master/database/testspassed.png
