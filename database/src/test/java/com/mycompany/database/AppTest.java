@@ -40,9 +40,7 @@ public class AppTest {
         String tab = "this_table";
         App instance = new App();
         instance.createTable(tab);
-        instance.openConnect();
-        // may need to use try catch and select to find if table exists
-        instance.closeConnect();
+        instance.dropTable(tab);
     }
 
     /**
@@ -51,11 +49,11 @@ public class AppTest {
     @Test
     public void testSelect() {
         System.out.println("select");
-        String tab = "";
+        String tab = "this_table";
         App instance = new App();
+        instance.createTable(tab);
         instance.select(tab);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.dropTable(tab);
     }
 
     /**
@@ -64,14 +62,14 @@ public class AppTest {
     @Test
     public void testInsert() {
         System.out.println("insert");
-        String tab = "";
-        String n = "";
-        String a = "";
-        String m = "";
+        String tab = "this_table";
+        String n = "'Name'";
+        String a = "11";
+        String m = "'Thank you for the warm mittens'";
         App instance = new App();
+        instance.createTable(tab);
         instance.insert(tab, n, a, m);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.dropTable(tab);
     }
 
     /**
@@ -80,15 +78,16 @@ public class AppTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-        String tab = "";
-        String colName = "";
-        String val = "";
-        String destColName = "";
-        String destVal = "";
+        String tab = "this_table";
+        String colName = "age";
+        String val = "11";
+        String destColName = "message";
+        String destVal = "'Thank you for the warm gloves'";
         App instance = new App();
+        instance.createTable(tab);
+        instance.insert(tab, "'Name'", "11", "'Thank you for the warm mittens'");
         instance.update(tab, colName, val, destColName, destVal);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.dropTable(tab);
     }
 
     /**
@@ -97,13 +96,14 @@ public class AppTest {
     @Test
     public void testDelete() {
         System.out.println("delete");
-        String tab = "";
-        String destColName = "";
-        String destVal = "";
+        String tab = "this_table";
+        String destColName = "id";
+        String destVal = "1";
         App instance = new App();
+        instance.createTable(tab);
+        instance.insert(tab, "'Name'", "11", "'Thank you for the warm mittens'");
         instance.delete(tab, destColName, destVal);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.dropTable(tab);
     }
 
     /**
@@ -114,21 +114,8 @@ public class AppTest {
         System.out.println("dropTable");
         String tab = "";
         App instance = new App();
+        instance.createTable(tab);
         instance.dropTable(tab);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of closeConnect method, of class App.
-     */
-    @Test
-    public void testCloseConnect() {
-        System.out.println("closeConnect");
-        App instance = new App();
-        instance.closeConnect();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -137,14 +124,12 @@ public class AppTest {
     @Test
     public void testStringsOk() {
         System.out.println("stringsOk");
-        String col = "";
-        String val = "";
+        String col = "age";
+        String val = "'8'";
         App instance = new App();
         boolean expResult = false;
         boolean result = instance.stringsOk(col, val);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
