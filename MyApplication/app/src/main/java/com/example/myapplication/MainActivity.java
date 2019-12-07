@@ -1,10 +1,14 @@
 package com.example.myapplication;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.widget.Button;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -19,14 +23,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        Button b1 = findViewById(R.id.button);
+        b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("Insert database info here");
+
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this, R.style.AlertDialogStyle);
+                alertDialog.setCancelable(true);
+                alertDialog.setTitle("@string/airbrush");
+                alertDialog.setMessage(stringBuilder.toString());
+                alertDialog.setPositiveButton("Change", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // where we will be able to change who the item is checked out to
+                    }
+                });
+                alertDialog.setNeutralButton("Email", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // where we will be able to email the person the item is checked out to
+                    }
+                });
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // where we can go back
+                    }
+                });
+                alertDialog.show();
             }
         });
+    }
+
+    public void checkoutSystem() {
+
     }
 
     @Override
