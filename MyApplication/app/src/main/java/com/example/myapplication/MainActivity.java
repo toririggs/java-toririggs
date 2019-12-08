@@ -20,14 +20,26 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.util.Log;
 
+import android.os.Bundle;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MyMessage";
-    DBHelper db = new DBHelper();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DBHelper db = new DBHelper(this);
+
+        // The commented lines were used to initialize the database since sqlite dbs in android are persistent
+        //Log.i(TAG, "Inserting status into database for the first time");
+        //db.addStatus(1,"Airbrush System Model# 722-E05", "READY", 0);
+        //db.addStatus(2, "Mini 3D Printer Model# 102", "CHECKED OUT", 1);
+        //db.addStatus(3, "Laser Engraver Model# 7221-B", "MAINTENANCE", 0);
+
+        //Log.i(TAG, "Inserting users into database for the first time");
+        //db.addUser(1, "Tori Riggs", "vlriggs@mavs.coloradomesa.edu");
+        //db.addUser(2, "Demo Guy", "demo56email@gmail.com");
 
         Button b1 = findViewById(R.id.button);
         b1.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         String value = input.getText().toString().trim();
                         String value2 = input2.getText().toString().trim();
-                        db.addUser(value, value2);
+                        db.addUser();
                         Toast.makeText(getApplicationContext(), "Added new user " + value + " with email " + value2, Toast.LENGTH_LONG).show();
                     }
                 });
