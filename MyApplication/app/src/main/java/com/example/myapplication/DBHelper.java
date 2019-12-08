@@ -1,46 +1,38 @@
 package com.example.myapplication;
 
-import java.sql.*;
+import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
-public class DBHelper {
-    Connection con;
-    private static final String TAG = "MyMessage";
+public class DBHelper extends SQLiteOpenHelper{
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "checkout";
+    private static final String TABLE_USERS = "users";
+    private static final String TABLE_STATUS = "status";
+    private static final String ITEM_ID = "itemid";
+    private static final String ITEM_NAME = "itemname";
+    private static final String STATUS = "status";
+    private static final String CHECKED_OUT_TO = "checkedoutto";
+    private static final String USER_ID = "userid";
+    private static final String USER_NAME = "username";
+    private static final String EMAIL = "email";
 
-    void connectUsers() {
-        try {
-            Class.forName("com.mysql.jbdc.Driver");
-            con = DriverManager.getConnection("jbdc:mysql://localhost:3306/users", "root", "1111");
-        }catch(Exception e){Log.i(TAG, e.toString());}
+    public DBHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    void connectStatus() {
-        try {
-            Class.forName("com.mysql.jbdc.Driver");
-            con = DriverManager.getConnection("jbdc:mysql://localhost:3306/status", "root", "1111");
-        }catch(Exception e){System.out.print(e);}
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + "(" + USER_ID + " INTEGER PRIMARY KEY, " + USER_NAME + " TEXT, " + EMAIL + " TEXT)";
+        db.execSQL(CREATE_USERS_TABLE);
     }
 
-    void disconnect() {
-        try{
-            con.close();
-        }catch(Exception e){System.out.print(e);}
-    }
-
-    void addUser(String name, String email) {
-        try{
-            Log.i(TAG,"got to add user");
-            connectUsers();
-            Log.i(TAG,"successfully connected");
-            PreparedStatement stmt = con.prepareStatement("insert into users (user_name,email) values (?,?);");
-            Log.i(TAG,"should have created statement");
-            stmt.setString(1, name);
-            stmt.setString(2, email);
-            stmt.executeUpdate();
-            Log.i(TAG,"should have inserted");
-            disconnect();
-            Log.i(TAG,"successfully disconnected");
-        }catch(Exception e){System.out.print(e);}
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
+        onCreate(db);
     }
 }
