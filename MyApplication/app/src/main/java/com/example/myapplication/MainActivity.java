@@ -1,11 +1,14 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
@@ -17,10 +20,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 
 import android.os.Bundle;
+
+import static java.lang.Integer.parseInt;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MyMessage";
@@ -46,16 +53,74 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append("Insert database info here");
+                final String e;
+                String item[] = db.getItem(1);
+                stringBuilder.append("Status: ");
+                stringBuilder.append(item[2] + "\n");
+                Log.i(TAG, "'" + item[2] + "'" );
+                if (item[2].equals("CHECKED OUT")) {
+                    stringBuilder.append("Checked out to: ");
+                    String user[] = db.getUser(parseInt(item[3]));
+                    stringBuilder.append(user[1] + "\n");
+                    e = user[2];
+                } else {
+                    stringBuilder.append(("Not checked out."));
+                    e = "";
+                }
 
                 final AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this, R.style.AlertDialogStyle);
                 alertDialog.setCancelable(true);
-                alertDialog.setTitle("@string/airbrush");
+                alertDialog.setTitle(getResources().getString(R.string.airbrush));
                 alertDialog.setMessage(stringBuilder.toString());
                 alertDialog.setPositiveButton("Change", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // where we will be able to change who the item is checked out to
+                    public void onClick(DialogInterface dialogInterface, int i) { String[][] users = db.getUsers();
+                        StringBuilder sb = new StringBuilder();
+
+
+                        for (String[] user:users){
+                            if (user[0] == null) break;
+                            else {
+                                sb.append("User " + user[0] + ": ");
+                                sb.append(user[1] + "\n");
+                                sb.append("Email: " + user[2] + "\n\n");
+                           }
+                        }
+                        sb.append("Enter the number 1001 to set the item to READY or 2002 to set the item to MAINTENANCE\n");
+                        final AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this, R.style.AlertDialogStyle);
+                        final TextView txt = new TextView(MainActivity.this);
+                        txt.append(sb);
+                        final EditText input = new EditText(MainActivity.this);
+                        input.setHint("User ID");
+                        LinearLayout l = new LinearLayout(MainActivity.this);
+                        l.setOrientation(LinearLayout.VERTICAL);
+                        alert.setCancelable(true);
+                        alert.setTitle("Set status");
+                        l.addView(txt);
+                        l.addView(input);
+                        final ScrollView scrollView = new ScrollView(MainActivity.this);
+                        scrollView.addView(l);
+                        alert.setView(scrollView);
+                        alert.setPositiveButton("Change", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String value = input.getText().toString().trim();
+                                int val = parseInt(value);
+                                String status;
+                                if (val == 1001) status = "READY";
+                                else if (val == 2002) status = "MAINTENANCE";
+                                else status = "CHECKED OUT";
+                                db.updateStatus(1, status, val);
+                                Toast.makeText(getApplicationContext(), "Changed status to " + status + " with user id " + val, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                        alert.show();
                     }
                 });
                 alertDialog.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
@@ -65,7 +130,15 @@ public class MainActivity extends AppCompatActivity {
                 alertDialog.setNegativeButton("Email", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // where we will be able to email the person the item is checked out to
+                        Intent email_intent = new Intent(Intent.ACTION_SEND);
+                        email_intent.putExtra(Intent.EXTRA_EMAIL, new String[]{e});
+                        Log.i(TAG, e);
+                        email_intent.putExtra(Intent.EXTRA_SUBJECT, "Your checked out item");
+                        email_intent.putExtra(Intent.EXTRA_TEXT, "Please return the item you checked out within 3 days.");
+
+                        email_intent.setType("message/rfc822");
+
+                        startActivity(Intent.createChooser(email_intent, "Choose an email client: "));
                     }
                 });
                 alertDialog.show();
@@ -93,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         String value = input.getText().toString().trim();
                         String value2 = input2.getText().toString().trim();
-                        db.addUser();
+                        db.addUser(value, value2);
                         Toast.makeText(getApplicationContext(), "Added new user " + value + " with email " + value2, Toast.LENGTH_LONG).show();
                     }
                 });
