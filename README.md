@@ -19,5 +19,5 @@ Repository for Java class with Dr. Macevoy
 | 3 - Collections  |  10/17  |  y  |  https://github.com/toririggs/java-toririggs/tree/master/collections  |  Create a program using HashSet  |
 | 4 - Threads  | 10/24 |  y  | https://github.com/toririggs/java-toririggs/tree/master/threads | Create a program utilizing threads |
 | 5 - Database  | 10/31 |  y  | https://github.com/toririggs/java-toririggs/tree/master/database | Create a program incorporating a database |
-| FINAL - Android Checkout App  | 12/10 |  n  | https://github.com/toririggs/java-toririggs/tree/master/MyApplication | Create a java/android program that serves a purpose |
+| FINAL - Android Checkout App  | 12/10 |  y  | https://github.com/toririggs/java-toririggs/tree/master/MyApplication | Create a java/android program that serves a purpose |
 
