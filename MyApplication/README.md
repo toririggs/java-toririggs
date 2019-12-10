@@ -18,6 +18,4 @@ Values xml files - https://github.com/toririggs/java-toririggs/tree/master/MyApp
 
 Proof of testing during coding - https://github.com/toririggs/java-toririggs/blob/master/MyApplication/ProofOfTesting.pdf
 
-Screenshot with tests passing - 
-
-Proof of execution - 
+Proof of execution - https://github.com/toririggs/java-toririggs/blob/master/MyApplication/Images.docx
